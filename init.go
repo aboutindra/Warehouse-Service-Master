@@ -1,6 +1,7 @@
 package main
 
 import (
+	"runtime"
 	"wmaster/http2"
 
 	"fmt"
@@ -21,6 +22,8 @@ func init() {
 func main() {
 
 	port := ":7554"
+
+	runtime.GOMAXPROCS(4)
 
 	handlers.AllowedHeaders([]string{"X-Requested-With"})
 	handlers.AllowedOrigins([]string{os.Getenv("ORIGIN_ALLOWED")})

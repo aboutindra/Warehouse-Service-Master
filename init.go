@@ -50,6 +50,8 @@ func main() {
 	r.HandleFunc("/v1/api/seto/tipe", htm.PutOneTipeMaster).Methods("PUT")
 	r.HandleFunc("/v1/api/seto/sub", htm.PutOneSubMaster).Methods("PUT")
 
+	r.HandleFunc("/v1/api/setm/stok", htm.PutStokWithArr).Methods("PUT")
+
 	r.HandleFunc("/v1/api/delo", htm.DelOneMaster).Methods("DELETE")
 
 	fasthttp.ListenAndServe(port, fasthttpadaptor.NewFastHTTPHandler(r))

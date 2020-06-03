@@ -12,6 +12,10 @@ type DataSub struct {
 	Qty   int64  `json:"qty, omitempty" bson:"qty, omitempty"`
 }
 
+type FormatUpdateArr struct {
+	Data []DataSub `json:"data" bson:"data"`
+}
+
 type DataMaster struct {
 	Id      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	IdMate  string             `json:"idMate" bson:"idMate"`

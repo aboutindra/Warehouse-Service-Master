@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mongo:
+    image: 'mongo'
+    hostname: 'mongo'
+    environment:
+      - MONGO_INITDB_DATABASE=WServiceMaster
+    ports:
+      - '27020:27020'
+    networks:
+      - WServiceMasterNetwork
+
+  app:
+    container_name: 'go-master'
+    image: go-master
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7554:7554"
+    depends_on:
+      - 'mongo'
+
+networks:
+  WServiceMasterNetwork:
+    driver: bridge

@@ -1,14 +1,15 @@
 version: '3.8'
 services:
   mongo:
-    image: 'mongo'
-    hostname: 'mongo'
+    image: mongo
+    container_name: "mongo-master"
+    restart: always
     environment:
-      - MONGO_INITDB_DATABASE=WServiceMaster
+      MONGO_INITDB_ROOT_DATABASE: WServiceMaster
+    volumes:
+      - './dockervolume/mongodb:/data/db'
     ports:
-      - '27020:27020'
-    networks:
-      - WServiceMasterNetwork
+      - 27017:27017
 
   app:
     container_name: 'go-master'
@@ -17,7 +18,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "7554:7554"
+      - '7554:7554'
     depends_on:
       - 'mongo'
 

@@ -11,6 +11,6 @@ var d db.MongoDB
 var c controller.Ctrl
 
 func init() {
-	d = db.MongoDB{"mongodb://localhost:27020", "WServiceMaster", "Master"}
+	d = db.MongoDB{"mongodb://mongo-master:27017", "WServiceMaster", "Master"}
 	c = controller.Ctrl{}
 }
